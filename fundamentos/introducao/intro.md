@@ -1,54 +1,112 @@
 # O que é Node.js?
 
 ## 📌 O que você vai aprender
-- Introdução ao node
-- Requisitos ao Node
-- Node.js vs.Navegador
+- Introdução ao Node
+- Requisitos do Node
+- Node.js vs. Navegador
 - Linha de comando
-- Motor Node V8
+- Motor V8
 - Arquitetura
 - Loop de eventos
 
 ## 📝 Conceitos
 
-### Intodução ao Node: 
+### Introdução ao Node
 
-O node.js é um modelo orientado a eventos e não bloqueante. Isso o torna excelente para aplicativos em tempoo real e sites com alto tráfego: 
+O **Node.js** é um modelo orientado a eventos e não bloqueante. Isso o torna excelente para aplicações em tempo real e sites com alto tráfego, como:
 
-- Servidores web e sites;
-- APIs REST;
-- Aplicativos em tempo real (como bate-papo);
-- Trabalhando com arquivos e bancos de dados;
-- IoT e controle de hardware;
+- Servidores web e sites  
+- APIs REST  
+- Aplicativos em tempo real (como chats)  
+- Manipulação de arquivos e bancos de dados  
+- IoT e controle de hardware  
 
-O `npm` é um gereciador de pacotes do Node.js, ele ajuda a instalar e gerenciar paotes (bibliotecas) de terceiros.
+O `npm` é o **gerenciador de pacotes do Node.js**, que ajuda a instalar e gerenciar pacotes (bibliotecas) de terceiros.
 
-O Node foi progetado para desenvolvimento do lado do servidor, enquanto os navegadores são para aplicações do lado do cliente.
+O Node foi projetado para desenvolvimento do **lado do servidor**, enquanto os navegadores são usados para aplicações do **lado do cliente**.
 
-Node vs. Navegador:
+## Node.js vs. Navegador
 
+| Funcionalidade             | Node.js | Browser |
+|----------------------------|:-------:|:-------:|
+| Acesso ao sistema de arquivos | ✔️ | ❌ |
+| Networking (TCP/UDP)       | ✔️ | ❌ |
+| Acesso ao DOM              | ❌ | ✔️ |
+| Objeto global              | `global` | `window` / `self` |
+| Módulos                    | CommonJS / ESM | ESM / Scripts |
+| Variáveis de ambiente      | ✔️ (`process.env`) | ❌ |
+| Segurança                  | Acesso ao SO | Sandboxed |
+| Gerenciadores de pacotes   | npm / yarn | CDN / Bundlers |
 
-| Funcionalidades     | Node.js | Browser |
-|-------------|:-----:|------------:|
-| Acesso a arquivos do sistema     |   Sim    | Não        |
-| Networking (TCP/UDP)       | Sim  | Não        |
-| acesso ao DOm     | Sim | Não       |
-| Objeto global     | Global | window/self       |
-| Modules       | CommonJS/ESM  | ESM/Scripts       |
-| Variaveis de ambiente     | Sim (process.env) | Não          |
-| Segurança     | Full OS acess | Sandboxed         |
-| Mouse       | R$80  | 4          |
-| geranciados de pacotes   | npm/yarn | CDM/Bundler          |
+## Linha de comando
 
+O Node disponibiliza uma poderosa interface de linha de comando (CLI) que permite:
 
+- Executar arquivos JavaScript  
+- Gerenciar pacotes  
+- Depurar aplicações  
+- Executar scripts personalizados  
 
-O Node disponibiliza uma poderosa interface de linha de comando (CLI) que permite executar arquivo javaScript, gerenciar pacotes, depurar aplicativos e muito mais.
+## Motor V8
 
+Desenvolvido pelo Google, o **V8** compila JavaScript para código de máquina nativo, permitindo execução extremamente rápida.
 
+Ele é rápido devido a:
 
+- **Compilação Just-In-Time (JIT)** → converte o Js em código de máquina otimizado em vez de interpretá-lo
+- **Cache embutido** 
+- **Coleta de lixo eficiente (GC)** → gerencia a memória para evitar vazamentos e otimiza o desempenho.
+
+O V8 também permite:
+
+- Executar JavaScript fora do navegador  
+- Acessar recursos do sistema operacional (via Node.js)
+
+## Arquitetura do Node
+
+A arquitetura do Node usa uma **thread única**, orientada a eventos, projetada para lidar com várias conexões simultaneamente.
+
+### Diagrama de arquitetura (descrição)
+
+#### 1. Fase de Solicitação do Cliente
+- Os clientes enviam solicitações ao servidor Node.js.  
+- Cada solicitação é adicionada à **fila de eventos**.
+
+#### 2. Fase do Loop de Eventos
+- O Event Loop verifica continuamente a fila.  
+- Trata solicitações uma a uma em um ciclo infinito.
+
+#### 3. Processamento de Requisições
+- **Tarefas simples (não bloqueantes)** → tratadas pela thread principal.  
+- **Tarefas complexas/bloqueantes** → enviadas ao *Thread Pool*.
+
+#### 4. Fase de Resposta
+- Quando tarefas complexas terminam, seus callbacks vão para a fila.  
+- O Event Loop processa os callbacks e envia as respostas.
+
+## Loop de Eventos
+
+O Event Loop torna o Node.js não bloqueante e eficiente.  
+Ele gerencia operações assíncronas delegando tarefas ao sistema e processando seus resultados por meio de callbacks, Promises ou eventos.
+
+O Node segue esta ordem para lidar com operações:
+
+1. Executar o script principal (código síncrono)  
+2. Processar **microtarefas** (Promises, `process.nextTick`)  
+3. Executar **temporizadores** (`setTimeout`, `setInterval`)  
+4. Executar callbacks de **E/S** (filesystem, rede)  
+5. Executar callbacks **imediatos**  
+6. Lidar com eventos de **fechamento** (ex.: `socket.on("close")`)
 
 ## 💡 Exemplos
 
-Para executar arquivo node.js (app.js, por exemplo) no terminal ou por prompt de comando usa-se `node app.js`
+### Executar um arquivo Node.js
+```bash
+node app.js 
+```
 
-Para instalar dependecias do projeto, usamos o `npm install`
+### Instalar pacotes com npm
+```bash
+npm install express
+```
+
