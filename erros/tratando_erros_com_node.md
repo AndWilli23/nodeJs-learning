@@ -68,64 +68,51 @@
 
 
 ### Níveis de tratamento de erros:
+    
 
 #### Tratamenrto básico:
 
-##### **Callbacks que priorizam erros: **
 
-    O padrão mais comun nos módulos do Node.js é aquele em que o primeiro argumento de uma função callback é um objeto de erro: 
+##### **Callbacks que priorizam erros:**
 
-    ```
-        function exemple(filaname, callback) {
-            fs.readFile(filename, 'utf8', (er, data) => {
-                if(err) {
-                    ...
-                } else if (err.code === 'EACCES') {
-                    ...
-                } 
-                return callback(err);
-            }
-                try {
-                    const config = JSON.parse(data);
-                    callback(null, config);
-                } catch (parseError) {
-                    callback(new Error(`Invalid JSON in ${filename}`))
-                }
+    O padrão mais comum nos módulos principais do Node.js é aquele em que o primeiro argumento de uma função de retorno de chamada é um objeto de erro. (Exemplo no diretório `Node_assincrono/exemplos`)
 
-            )
-        }
-    ```
+#### Tratamento moderno
 
-#### Tratamenrto moderno:
+##### **Utilizando try...catch com Async/Await**
 
-##### **Utilizando try...catch com Async/Await **
+Com async/await, pode-se usar blocos `try/catch` tanto para código síncrono quanto assíncrono.  
+(Exemplo no diretório `Node_assincrono/exemplos`)
 
-    Com Async/await, pode-se usar blocos try/catch tanto para código síncronos quanto assíncrono; (Segue exemplo arquivo `Node_assincrono/exemplos`)
+---
 
-#### Tratamento de erros globais:
+#### Tratamento de erros globais
 
-##### **Exceções não tratadas: **
+##### **Exceções não tratadas**
 
-    Para erros *inesperados*, deve-se monitorar a ocorr~encia de `uncaughtException` para realizar a limpeza antes de encerrar o programa. (Segue exemplo arquivo `Node_assincrono/exemplos/niveis_tratamento_erros`)
+Para erros *inesperados*, deve-se monitorar a ocorrência de `uncaughtException` para realizar a limpeza antes de encerrar o programa.  
+(Exemplo em `Node_assincrono/exemplos/niveis_tratamento_erros`)
 
+---
 
-## 🎉 Boas práticas: 
+## 🎉 Boas práticas
 
-O que deve ser feito: 
+### O que deve ser feito
 
-- Lidar com erros no nível apropriado
-- Registrar os erros com contexto suficiente
-- Utilizar tipos de erros personalizados para diferentes cenários
-- Limpar recursos em blocos finally
-- Validar a entrada para detectar erros precocemente
+- Lidar com erros no nível apropriado  
+- Registrar os erros com contexto suficiente  
+- Utilizar tipos de erros personalizados para diferentes cenários  
+- Limpar recursos em blocos `finally`  
+- Validar a entrada para detectar erros precocemente  
 
-O que não deve ser feito: 
+### O que não deve ser feito
 
-- Ignorar erros (blocos catch vazios)
-- Expor detalhes confidenciais de erros aos clientes
-- Usa um sistema try/catch para controle de fluxo
-- Ignorar os erros sem registrá-los
-- Continuar a execução após erros irrecuperáveis
+- Ignorar erros (blocos `catch` vazios)  
+- Expor detalhes confidenciais de erros aos clientes  
+- Usar `try/catch` como controle de fluxo  
+- Ignorar os erros sem registrá-los  
+- Continuar a execução após erros irrecuperáveis  
+
 
 
 
