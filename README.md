@@ -16,3 +16,17 @@ Como as pastas estão organizadas em ordem alfabética, segue uma **linha do tem
 ---
 
 > ⚡ Dica: Siga a ordem acima para absorver os conceitos gradualmente, do básico ao avançado.
+
+## 🛠️ Referências e Fontes de Estudo
+
+Este material foi construído com base nas seguintes fontes, sendo o W3Schools a principal referência para a estrutura e os conceitos básicos:
+
+### 1. Referência Base
+* **W3Schools:** Seção Node.js (Link específico para a página inicial de Node.js se possível).
+
+### 2. Documentação Oficial
+* **Documentação Oficial do Node.js:** Para aprofundamento técnico e melhores práticas.
+    * [Link para a documentação do Node.js](https://nodejs.org/docs/latest/api/)
+    
+
+
