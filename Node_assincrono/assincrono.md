@@ -193,7 +193,7 @@ Ex. de uso:
 
 Outra vantagem do async/await é que ele permite o uso de blocos **try/cacth** para tratamentos de erros.
 
-### *Boas práticas:*
+## 🎉 Boas práticas 
 
 1. Funções assíncronas sempre retornam Promises.
 
