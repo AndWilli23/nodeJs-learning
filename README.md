@@ -27,6 +27,11 @@ Este material foi construído com base nas seguintes fontes, sendo o W3Schools a
 ### 2. Documentação Oficial
 * **Documentação Oficial do Node.js:** Para aprofundamento técnico e melhores práticas.
     * [Link para a documentação do Node.js](https://nodejs.org/docs/latest/api/)
+* **Documentação Oficial do npm:** Para aprofundamento técnico e melhores práticas.
+    * [Link para a documentação do npm](https://nodejs.org/docs/latest/api/)
+    
+* **Artigo da Medium sobre o package-lock.json:** Para aprofundamento técnico e melhores práticas.
+    * [Link para o artigo](https://medium.com/@allangrds/tudo-que-voc%C3%AA-queria-saber-sobre-o-package-lock-json-mas-estava-com-vergonha-de-perguntar-e70589f2855f)
     
 
 
